@@ -1,0 +1,53 @@
+
+<html>
+    <head>
+        <title>Enter 1, 2 or 3 or stop to exit</title>
+    </head>
+    <body>
+        <script>
+            window.addEventListener("load", showOptions);
+            // I was trying to figure out how to use this with a previous lesson!, So glad to finally figure it out!
+            var idOfOptionsFunc = setInterval(showOptions, 6000);
+            
+            function showOptions() {
+            
+            var VillianInput = prompt("Who is your favorite movie villain: (Enter 1, 2 or 3 or stop to exit) \n1. Oogie Boogie \n2.  Voldemort \n3. Hans Landa ");
+            
+            if (VillianInput === "stop") {
+                stopShowingOptions();
+            }
+            
+            if (VillianInput == "1") {
+				const img = new Image(500, 500);
+				img.src = "https://static.wikia.nocookie.net/thenightmarebeforechristmas/images/6/63/OogieBoogie.png/revision/latest?cb=20170702230144";
+				document.body.appendChild(img);
+			}	
+            else if (VillianInput == "2") {
+                const img = new Image(500, 500);
+				img.src = "https://media.wired.co.uk/photos/606dabdf73af541e6269532b/4:3/w_1704,h_1278,c_limit/Voldemort1.jpg";
+				document.body.appendChild(img);
+            } 
+			else if (VillianInput == "3") {
+				const img = new Image(500, 500);
+				img.src = "https://www.maxim.com/wp-content/uploads/2021/10/hans-landa-best-character-promo-scaled.jpg";
+				document.body.appendChild(img);
+            }
+            
+
+            else {
+				const img = new Image(500, 500);
+				img.src = "https://themouseminute.files.wordpress.com/2020/10/hades.jpg";
+				document.body.appendChild(img);
+            }
+        }
+        
+
+        function stopShowingOptions() {
+          clearInterval(idOfOptionsFunc);
+        }
+        
+        
+        
+        </script>
+    </body>
+</html>

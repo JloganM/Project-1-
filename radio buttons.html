@@ -1,0 +1,108 @@
+<html>
+  
+<head>
+    <title>
+        Get value of selected
+        radio buttons
+    </title>
+</head>
+  
+<body>
+    <p>
+        Select Make and Color and click on Submit.
+    </p>
+      
+    Color:
+			<div>
+    <input type="radio" name="Color" value="Red" id="Red">
+		<label for="Red">Red<label>
+			</div>
+			<div>
+    <input type="radio" name="Color" value="Blue" id="Blue">
+		<label for="Blue">Blue</label>
+			</div>
+			<div>
+    <input type="radio" name="Color" value="Green" id="Green">
+		<label for="Green">Green</label>
+			</div>
+    <br>
+	
+	Make:
+			<div>
+    <input type="radio" name="Make" value="Lexus" id="Lexus">
+		<label for="Lexus">Lexus</label>
+			</div>
+			<div>
+    <input type="radio" name="Make" value="Benz" id="Benz">
+		<label for="Benz">Benz</label>
+			</div>
+    <br>
+	
+	<p>
+	
+		<button id="btn">Show Car</button>
+      
+    <p id="output"></p>
+      
+    <script>
+	        const btn = document.querySelector('#btn');        
+        const radioButtons = document.querySelectorAll('input[name="Color"]');
+		const radioMakeButtons = document.querySelectorAll('input[name="Make"]');
+		
+		let selectedColor;
+		let selectedMake;
+		
+        btn.addEventListener("click", () => {
+            let selectedColor;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                    selectedColor = radioButton.value;
+                    break;
+                }
+            }
+			for (const radioButton of radioMakeButtons) {
+				if (radioButton.checked) {
+					selectedMake = radioButton.value;
+						break;
+				}
+			}
+			
+		if (selectedColor == "Red" && selectedMake == "Lexus") {
+             const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR08wak9UkXXzre2tCSAj9MN_FdL7WORR9Vw&usqp=CAU";
+				document.body.appendChild(img); 
+		}	
+            else if (selectedColor == "Blue" && selectedMake == "Lexus") {
+                const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEYAyUjtN07pIuOHaLhVjHJYNHKk-rwO5ZIw&usqp=CAU";
+				document.body.appendChild(img);
+		}
+			else if (selectedColor == "Green" && selectedMake == "Lexus") {
+                const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEHiMz7HLuFVacfVEvIEDGU9vkEail-z49Cw&usqp=CAU";
+				document.body.appendChild(img);
+		}
+		    else if (selectedColor == "Red" && selectedMake == "Benz") {
+                const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBcu8Cuc2JdHA3HrWmqEa62PyFC0m_N5vH1O9tmk5fxeK76UFistmd-m2GwErQIHWwAHk&usqp=CAU";
+				document.body.appendChild(img);
+		}
+		    else if (selectedColor == "Blue" && selectedMake == "Benz") {
+                const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5FLn4cY_MCNb4Qi_vI2H3Q0sct5Sde7U6lcgA7ctNqlK_zvgVoS4hegIKyKKUcyxwtw&usqp=CAU";
+				document.body.appendChild(img);
+		}
+			else if (selectedColor == "Green" && selectedMake == "Benz") {
+                const img = new Image(500, 500);
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvLgyBE-EedEjAm6eDOSzh6yXlvA2_5wNl8tR2xAkhUxEM0lUMPHdS7AvGiQ8EWiHm9uI&usqp=CAU";
+				document.body.appendChild(img);
+		}
+        else {
+				const img = new Image(500, 500);
+				img.src = "https://www.usnews.com/object/image/00000182-a542-dc41-a1db-a56f5d250000/1-geo-metro-ifcar_640x420.jpg?update-time=&size=responsiveFlow640";
+				document.body.appendChild(img);     
+			}
+			});
+    </script>
+	</body>
+	</html>

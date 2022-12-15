@@ -1,0 +1,134 @@
+this is my prompt. Create a Pet Rescue page that when users scroll over photos of pets, info about the pet pops up such as availability date, vaccination status, age, gender, breed, and notes (ex. good with children). A pet carrier image will serve as a shopping cart, so users must be able to request a pet (and the pet is taken off the availability list). My code does not remove the images/pets whenever I select reserve i also need to tie the hopping cart to display when the last image of a pet carrier is selected. This is in javascript. please help. 
+
+<html>
+  <head>
+    <title>Pet Rescue</title>
+    <script>
+
+      function showInfo(pet) {
+
+        document.getElementById(pet.id + '-info').style.display = 'block';
+      }
+
+      function hideInfo(pet) {
+
+        document.getElementById(pet.id + '-info').style.display = 'none';
+      }
+
+
+      function removePet(pet) {
+
+  document.getElementById(pet.id).style.display = 'none';
+}
+
+function storePetData(pet) {
+  let petData = {
+    date: pet.date,
+    vaccinationStatus: pet.vaccinationStatus,
+    age: pet.age,
+    gender: pet.gender,
+    breed: pet.breed,
+    notes: pet.notes
+  };
+
+
+  localStorage.setItem(pet.id, JSON.stringify(petData));
+}
+
+
+
+        localStorage.setItem(pet.id, JSON.stringify(petData));
+      }
+      
+
+      function addToCart(pet) {
+
+        localStorage.setItem(pet.id, JSON.stringify(pet));
+      }
+      
+
+      function showCart() {
+
+  let cart = localStorage.getItem('cart');
+  cart = JSON.parse(cart);
+
+
+  if (!cart || cart.length === 0) {
+    alert('You have not reserved any pets.');
+    return;
+  }
+  
+
+  let cartString = 'You have reserved:\n';
+  for (let i = 0; i < cart.length; i++) {
+    cartString += '- ' + cart[i].name + ' (' + cart[i].breed + ')\n';
+  }
+  
+
+  alert(cartString);
+}
+
+    </script>
+  </head>
+  <body>
+    <form onsubmit="removePet(this.pet); storePetData(this.pet);">
+      <h1>Welcome to Pet Rescue! Scroll over the photos of our available pets to learn more about them.</h1>
+      <div>
+        <img src="Placeholder" height="500" width="500" id="pet1" onmouseover="showInfo(this)" onmouseout="hideInfo(this)" />
+        <div id="pet1-info" style="display:none;">
+          <strong>Date:</strong> 11/28/2022<br />
+          <strong>Vaccination Status:</strong> Up to date<br />
+          <strong>Age:</strong> 4 years<br />
+          <strong>Gender:</strong> Male<br />
+          <strong>Breed:</strong> Chow Chow<br />
+          <strong>Notes:</strong> Good with children
+        </div>
+        <button onclick="removePet(this)">Reserve</button>
+        <input type="submit" name="pet" value="pet1" onclick="this.pet={id:'pet1', date:'11/28/2020', vaccinationStatus:'Up to date', age:'4 years', gender:'Male', breed:'Chow', notes:'Good with children'}" />
+      </div>
+      <div>
+        <img src="Placeholder" height="500" width="500" id="pet2" onclick="this.pet={id:"pet2", date:"12/03/2022", vaccinationStatus:"Up to date", age:"2 Years", gender:"Female", breed:"Pitbull", notes:"Good with children"}" />
+      </div>
+	        <div>
+		 <div>
+		<img src="Placeholder" height="500" width="500" id="pet2" onmouseover="showInfo(this)" onmouseout="hideInfo(this)" />
+        <div id="pet2-info" style="display:none;">
+          <strong>Date:</strong> 12/03/2022<br />
+          <strong>Vaccination Status:</strong> Up to date<br />
+          <strong>Age:</strong> 2 Years<br />
+          <strong>Gender:</strong> Female<br />
+          <strong>Breed:</strong> Pitbull<br />
+          <strong>Notes:</strong> Good with children
+        </div>
+		<button onclick="removePet(this)">Reserve</button>
+        <input type="submit" name="pet" value="pet2" onclick="this.pet={id:"pet2", date:"12/03/2022", vaccinationStatus:"Up to date", age:"2 Years", gender:"Female", breed:"Pitbull", notes:"Good with children"}" />
+      </div>
+        <img src="PLaceholder" height="500" width="500" id="pet3" onmouseover="showInfo(this)" onmouseout="hideInfo(this)" />
+        <div id="pet3-info" style="display:none;">
+          <strong>Date:</strong> 12/10/2022<br />
+          <strong>Vaccination Status:</strong> Up to date<br />
+          <strong>Age:</strong> 3 years<br />
+          <strong>Gender:</strong> Male<br />
+          <strong>Breed:</strong> Sphynx <br />
+          <strong>Notes:</strong> Good with other animals
+        </div>
+		<button onclick="removePet(this)">Reserve</button>
+        <input type="submit" name="pet" value="pet3" onclick="this.pet={id:"pet3", date:"12/10/2020", vaccinationStatus:"Up to date", age:"3 years", gender:"Male", breed:"Sphynx", notes:"Good with other animals"}" />
+      </div>
+ <div>
+<img src="Placeholder" height="500" width="500" id="pet4" onmouseover="showInfo(this)" onmouseout="hideInfo(this)" />
+        <div id="pet4-info" style="display:none;">
+          <strong>Date:</strong> 11/13/2022<br />
+          <strong>Vaccination Status:</strong> Up to date<br />
+          <strong>Age:</strong> 2 Years<br />
+          <strong>Gender:</strong> Male<br />
+          <strong>Breed:</strong> La Perm<br />
+          <strong>Notes:</strong> Good with Dogs
+        </div>
+		<button onclick="removePet(this)">Reserve</button>
+        <input type="submit" name="pet" value="pet4" onclick="this.pet={id:"pet4", date:"11/13/2022", vaccinationStatus:"Up to date", age:"2 Years", gender:"Male", breed:"La Perm", notes:"Good with dogs"}" />
+      </div>
+      <img src="Placeholder" alt="Pet Carrier" />
+    </form>
+  </body>
+</html>
